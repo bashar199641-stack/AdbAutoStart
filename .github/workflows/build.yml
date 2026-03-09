@@ -25,7 +25,7 @@ jobs:
           gradle-version: '8.0'
 
       - name: Build APK
-        run: gradle assembleDebug
+        run: cd AdbAutoStart && gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
