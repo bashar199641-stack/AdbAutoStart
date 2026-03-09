@@ -4,6 +4,7 @@ plugins {
 
 android {
     compileSdk 33
+    namespace "com.adbmanager.autostart"
     defaultConfig {
         applicationId "com.adbmanager.autostart"
         minSdk 26
