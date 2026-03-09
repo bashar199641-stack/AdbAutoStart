@@ -19,14 +19,19 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
-      - name: Grant execute permission
-        run: chmod +x AdbAutoStart/gradlew
+      - name: Show structure
+        run: find . -name "gradlew" 2>/dev/null && ls -la
+
+      - name: Download gradlew
+        run: |
+          curl -L https://raw.githubusercontent.com/gradle/gradle/v8.0.0/gradlew -o gradlew
+          chmod +x gradlew
 
       - name: Build APK
-        run: cd AdbAutoStart && ./gradlew assembleDebug
+        run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: AdbAutoStart
-          path: AdbAutoStart/app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
